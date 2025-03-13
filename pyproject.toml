@@ -1,0 +1,13 @@
+[project]
+name = "oauf-2-0"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django>=5.1.7",
+    "social-auth-app-django>=5.4.3",
+]
+
+[dependency-groups]
+dev = []
