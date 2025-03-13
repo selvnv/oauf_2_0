@@ -128,6 +128,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -136,3 +137,7 @@ LOGIN_REDIRECT_URL = '/profile/'
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'SOME_CLIENT_ID_HERE'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SOME_SECRET_HERE'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['profile', 'email']
+
+SOCIAL_AUTH_GITHUB_KEY = 'Ov23li397cwMt4XVPgUk'
+SOCIAL_AUTH_GITHUB_SECRET = 'SOME_SECRET_HERE'
+SOCIAL_AUTH_GITHUB_SCOPE = ['user']

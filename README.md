@@ -77,11 +77,14 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['profile', 'email']
 
 #### Настройки интеграции со сторонними сервисами
 
-Для того, чтобы настроить интеграцию со сторонним сервисом, необходимо добавить наше приложение-клиент в список авторизованных.
+> [!TIP]
+> Настройки для конкретного сервиса можно найти в документации `social-auth`. Пример для [Github](https://python-social-auth.readthedocs.io/en/latest/backends/github.html), [Google](https://python-social-auth.readthedocs.io/en/latest/backends/google.html)
+
+Для того, чтобы настроить интеграцию со сторонним сервисом, необходимо добавить наше приложение-клиент в список авторизованных на выбранных сервисах.
 
 <img src="./resources/create_client_google.png" width="500px">
 
-При "регистрации" приложения нужно указать URI для перенаправления пользователя после выполнения входа в формате `<protocol>://<domen><:port></path>/complete/google-oauth2/`
+При "регистрации" приложения нужно указать URI для перенаправления пользователя после выполнения входа в формате `<protocol>://<domen><:port></path>/complete/<provider>/`
 
 Например, в `urls.py` `social_django.urls` включен по пути `auth/`
 ```python
@@ -163,3 +166,47 @@ urlpatterns = [
 Скриншот из панели управления
 
 <img src="./resources/auth_5.png" width="800">
+
+### Пример настройки аутентификации через Github
+
+[Статья на github](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authenticating-to-the-rest-api-with-an-oauth-app)
+
+#### Регистрация приложения
+
+<img src="./resources/client_registration_github.png" width="800">
+
+Получение токенов
+
+<img src="./resources/get_client_credentials.png" width="800">
+
+#### Настройки на стороне Django-приложения
+
+Прежде всего указываются настройки проекта в `settings.py`
+```python
+# settings.py
+AUTHENTICATION_BACKENDS = (
+    # ...
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = 'Ov23li397cwMt4XVPgUk'
+SOCIAL_AUTH_GITHUB_SECRET = 'SOME_SECRET_HERE'
+# Скоупы указывать не обязательно. Их перечень можно найти 
+# в документации конкретного сервиса, через который настраивается аутентификация
+SOCIAL_AUTH_GITHUB_SCOPE = ['user']
+```
+
+Затем необходимо добавить ссылку в элемент для перенаправления на страницу авторизации стороннего сервиса
+
+```html
+<!-- Some HTML-code here -->
+<a href="{% url 'social:begin' 'github' %}">Войти через Github</a>
+<!-- Some HTML-code here -->
+```
+
+#### Авторизация через Github
+
+<img src="./resources/auth_github_1.png" width="500">
+
+<img src="./resources/auth_github_2.png" width="500">
