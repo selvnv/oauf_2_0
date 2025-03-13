@@ -1,0 +1,9 @@
+{% if user.is_authenticated %}
+    <p>Привет, {{ user.username }}!</p>
+    <form action="{% url 'social:disconnect' 'google-oauth2' %}?next=/" method="post">
+    {% csrf_token %}
+    <button type="submit">Выйти</button>
+</form>
+{% else %}
+    <a href="{% url 'social:begin' 'google-oauth2' %}">Войти через Google</a>
+{% endif %}

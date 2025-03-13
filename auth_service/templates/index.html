@@ -1,15 +1,2 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            INDEX
-        </title>
-    </head>
-    <body>
-        <a href="https://python-social-auth.readthedocs.io/en/latest/configuration/django.html">
-            <button>
-                Login
-            </button>
-        </a>
-    </body>
-</html>
+<h2>Войти через Google</h2>
+<a href="{% url 'social:begin' 'google-oauth2' %}">Войти через Google</a>

@@ -1,8 +1,8 @@
-from django.urls import path, include
+from django.urls import path
 
-from auth_service.views import index
+from auth_service.views import index, profile
 
 urlpatterns = [
-    path('auth/', index, name='index'),
-    path('auth/social/', include('social_django.urls', namespace='social'))
+    path('', index, name='index'),
+    path('profile/', profile, name='profile'),
 ]

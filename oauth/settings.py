@@ -128,10 +128,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
-    'social_core.backends.vk.VKOAuth2'
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_VK_OAUTH2_KEY = ''
-SOCIAL_AUTH_VK_OAUTH2_SECRET = ''
-SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['offline', 'email']
+LOGIN_REDIRECT_URL = '/profile/'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'SOME_CLIENT_ID_HERE'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SOME_SECRET_HERE'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['profile', 'email']
