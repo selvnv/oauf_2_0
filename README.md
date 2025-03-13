@@ -159,3 +159,7 @@ urlpatterns = [
 Страница профиля пользователя (`profile.html`)
 
 <img src="./resources/auth_4.png" width="800">
+
+Скриншот из панели управления
+
+<img src="./resources/auth_5.png" width="800">
