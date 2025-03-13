@@ -69,7 +69,7 @@ LOGIN_REDIRECT_URL = '/profile/'
 
 # Ключи, полученные для приложения-клиента на Google Cloud
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'SOME_CLIENT_ID_HERE'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SOME_SECRET_HERE'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SOME_SECRET_KEY'
 
 # Данные запрашиваемые клиентом (приложением) при аутентификации
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['profile', 'email']
@@ -109,7 +109,7 @@ Quit the server with CTRL-BREAK.
 * Порт: `8000`
 * Путь: `auth`
   * Если `social_django.urls` включен "в корень", то путь не указывается. Проверить наличие пути можно при выполнении запроса к сервису в `Dev-Tools`
-* Обязательная часть: `/complete/google-oauth2/`
+* Провайдер (сервис авторизации): `google-oauth2`
 
 Определение пути в QueryString при выполнении запроса к сервису:
 <img src="./resources/dev_tools.png" width="800px">
@@ -190,7 +190,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-SOCIAL_AUTH_GITHUB_KEY = 'Ov23li397cwMt4XVPgUk'
+SOCIAL_AUTH_GITHUB_KEY = 'SOME_CLIENT_ID_HERE'
 SOCIAL_AUTH_GITHUB_SECRET = 'SOME_SECRET_HERE'
 # Скоупы указывать не обязательно. Их перечень можно найти 
 # в документации конкретного сервиса, через который настраивается аутентификация
